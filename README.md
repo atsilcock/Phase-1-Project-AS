@@ -10,6 +10,7 @@ The Simple Budget App is designed to calculate different budget items into one t
 - **Feature 2:** Users can enter the amount for each budget item within its respective box.
 - **Feature 3:** After entering all amounts, users can click the "Submit" button.
 - **Feature 4:** A list displaying the name and individual total of each budget item, along with the grand total, is generated below.
+- **Feature 5: ** User can add an expense or delete an expense 
 - **Feature 5:** A PDF is generated with detailed information, including the name, total of each budget item, and the grand total.
 
 ## Getting Started
