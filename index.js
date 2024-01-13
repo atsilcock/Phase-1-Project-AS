@@ -1,5 +1,6 @@
 // Variables
 const submitButton = document.querySelector('input[type="submit"]');
+const submitFetchButton = document.getElementById("testButton")
 const electricInput = document.querySelector('input[name="Electric"]');
 const rentInput = document.querySelector('input[name="Rent"]');
 const gasInput = document.querySelector('input[name="Gas"]');
@@ -15,6 +16,12 @@ submitButton.addEventListener('click', function (event) {
     event.preventDefault();
     calculateTotal();
 });
+
+submitFetchButton.addEventListener('click', function(event){
+    event.preventDefault(); console.log('clicked')
+    //write fetch
+});
+
 
 // Function to Calculate Total
 
