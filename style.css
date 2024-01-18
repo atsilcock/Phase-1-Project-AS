@@ -1,0 +1,23 @@
+h1 {
+    font-size: larger;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-style:normal;
+    color:rgb(234, 0, 0);
+    text-align: center;
+}
+
+h3 {
+    color: navy;
+    
+}
+
+form {
+    color: rgb(237, 100, 105);
+    font-weight: 900;
+    box-sizing: border-box;
+}
+
+
+input {
+    color: rgb(0, 0, 0);
+}
