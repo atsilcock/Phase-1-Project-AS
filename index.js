@@ -7,25 +7,23 @@ const gasInput = document.querySelector('input[name="Gas"]');
 const waterInput = document.querySelector('input[name="Water"]');
 const phoneInput = document.querySelector('input[name="Phone"]');
 const formParametersElement = document.getElementById('formParameters');
+const resultsDiv = document.getElementById('fetch-response');
 const headers = {
     "X-Params": {
-        "frequency": "monthly",
+        "frequency": "annual",
         "data": [
-            "cost"
+            "all-other-costs"
         ],
         "facets": {
-            "location": [
+            "state": [
                 "CO"
-            ],
-            "sectorid": [
-                1
             ]
         },
         "start": null,
         "end": null,
         "sort": [
             {
-                "column": "period",
+                "column": "state",
                 "direction": "desc"
             }
         ],
@@ -35,7 +33,9 @@ const headers = {
 }
 
 //const url = "electricity/retail-sales&api_key=DSoIexmljF94PXO13LN5lyCmuRhsWNAI2BqGaA03&"
-const url = "https://api.eia.gov/v2/electricity/electric-power-operational-data/data/?api_key=DSoIexmljF94PXO13LN5lyCmuRhsWNAI2BqGaA03&data[0]=price&data[1]=revenue&frequency=monthly&data[0]=cost&facets[location][]=CO&facets[sectorid][]=1&sort[0][column]=period&sort[0][direction]=desc&offset=0&length=5000"
+const url = "https://api.eia.gov/v2/electricity/state-electricity-profiles/energy-efficiency/data/?frequency=annual&data[0]=all-other-costs&facets[state][]=CO&sort[0][column]=state&sort[0][direction]=desc&offset=0&length=5000&api_key=DSoIexmljF94PXO13LN5lyCmuRhsWNAI2BqGaA03"
+
+// const url = "https://api.eia.gov/v2/electricity/electric-power-operational-data/data/?api_key=DSoIexmljF94PXO13LN5lyCmuRhsWNAI2BqGaA03&data[0]=price&data[1]=revenue&frequency=monthly&data[0]=cost&facets[location][]=CO&facets[sectorid][]=1&sort[0][column]=period&sort[0][direction]=desc&offset=0&length=5000"
 
 
 
@@ -51,10 +51,28 @@ submitFetchButton.addEventListener('click', function(event){
     event.preventDefault(); console.log('clicked')
     fetch(url, {
         method: "GET",
-        headers: headers
+        // headers: headers
     })
     .then(response => response.json())
-    .then(response=>console.log(response));
+    .then(response=>{
+        // console.log(response.response.data)
+        // const keys = new Set()
+        // response.response.data.forEach(item=>{
+        //     Object.keys(item).forEach(key=>keys.add(key))
+        // })
+        const residentialData = response.response.data.filter(item => item['sectorName'] == 'residential')
+        response.response.data.forEach(item => console.log(item))
+        console.log(`-----------------------`)
+        console.log(`Residential Data: ${JSON.stringify(residentialData)}`)
+        const paragraphs = residentialData.map(item => {
+            const p = document.createElement('p');
+            p.textContent = JSON.stringify(item)
+            return p;
+        })
+        paragraphs.forEach(paragraph => {
+            resultsDiv.appendChild(paragraph)
+        })
+        });
 });
 
 
