@@ -9,6 +9,7 @@ const phoneInput = document.querySelector('input[name="Phone"]');
 const formParametersElement = document.getElementById('formParameters');
 const electricBody = document.getElementById('electric-body');
 const gasBody = document.getElementById('gas-Body');
+const mouseMovement=document.getElementById('mouseMovement');
 const headers = {
     "X-Params": {
         "frequency": "monthly",
@@ -66,10 +67,33 @@ const url = "https://api.eia.gov/v2/electricity/retail-sales/data/?api_key=DSoIe
 //Gas
 const gasUrl= "https://api.eia.gov/v2/natural-gas/pri/rescom/data/?api_key=DSoIexmljF94PXO13LN5lyCmuRhsWNAI2BqGaA03&frequency=monthly&data[0]=value&sort[0][column]=period&sort[0][direction]=desc&offset=0&length=5000"
 
+
+//Event Listener 
+
 submitButton.addEventListener('click', function (event) {
     event.preventDefault();
     calculateTotal();
+    console.log(submitButton)
 });
+
+
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+        event.preventDefault();
+        calculateTotal();
+        console.log(submitButton);
+        console.log('Enter Key Pressed')
+    }
+});
+
+window.addEventListener('scroll',function() {
+   
+    console.log('page is being scrolled')
+};
+
+//The keydown event is fired when a key is pressed. Unlike the deprecated keypress event, 
+// the keydown event is fired for all keys, regardless of whether they produce a character value.
+
 
 submitFetchButton.addEventListener('click', function(event){
     event.preventDefault(); console.log('clicked')
@@ -126,8 +150,6 @@ gasRows.forEach(row => {
     gasBody.appendChild(row)
 })
 });
-
-
 
 
 
