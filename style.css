@@ -15,9 +15,25 @@ form {
     color: rgb(237, 100, 105);
     font-weight: 900;
     box-sizing: border-box;
+    margin-top:5px;
+}
+
+label{
+    padding-top: 5px;
 }
 
 
 input {
     color: rgb(0, 0, 0);
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
+
+table {
+    border: solid;
+    margin-top: 15px;
+}
+
+tr:nth-child(even) {
+    background-color: gray;
+  }
