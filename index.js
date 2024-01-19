@@ -8,14 +8,15 @@ const waterInput = document.querySelector('input[name="Water"]');
 const phoneInput = document.querySelector('input[name="Phone"]');
 const formParametersElement = document.getElementById('formParameters');
 const electricBody = document.getElementById('electric-body');
+const gasBody = document.getElementById('gas-Body');
 const headers = {
     "X-Params": {
-        "frequency": "annual",
+        "frequency": "monthly",
         "data": [
-            "all-other-costs"
+            "price"
         ],
         "facets": {
-            "state": [
+            "stateid": [
                 "CO"
             ]
         },
@@ -23,7 +24,7 @@ const headers = {
         "end": null,
         "sort": [
             {
-                "column": "state",
+                "column": "period",
                 "direction": "desc"
             }
         ],
@@ -32,15 +33,38 @@ const headers = {
     }
 }
 
-//const url = "electricity/retail-sales&api_key=DSoIexmljF94PXO13LN5lyCmuRhsWNAI2BqGaA03&"
-const url = "https://api.eia.gov/v2/electricity/state-electricity-profiles/energy-efficiency/data/?frequency=annual&data[0]=all-other-costs&facets[state][]=CO&sort[0][column]=state&sort[0][direction]=desc&offset=0&length=5000&api_key=DSoIexmljF94PXO13LN5lyCmuRhsWNAI2BqGaA03"
+const gasHeaders = {
+    "X-Params": {
+        "frequency": "monthly",
+        "data": [
+            "price"
+        ],
+        "facets": {
+            "stateid": [
+                "CO"
+            ]
+        },
+        "start": null,
+        "end": null,
+        "sort": [
+            {
+                "column": "period",
+                "direction": "desc"
+            }
+        ],
+        "offset": 0,
+        "length": 5000
+    }
+}
 
-// const url = "https://api.eia.gov/v2/electricity/electric-power-operational-data/data/?api_key=DSoIexmljF94PXO13LN5lyCmuRhsWNAI2BqGaA03&data[0]=price&data[1]=revenue&frequency=monthly&data[0]=cost&facets[location][]=CO&facets[sectorid][]=1&sort[0][column]=period&sort[0][direction]=desc&offset=0&length=5000"
-
+//URL's 
+//Electric
+const url = "https://api.eia.gov/v2/electricity/retail-sales/data/?api_key=DSoIexmljF94PXO13LN5lyCmuRhsWNAI2BqGaA03&frequency=monthly&data[0]=price&facets[stateid][]=CO&sort[0][column]=period&sort[0][direction]=desc&offset=0&length=5000"
 
 
 // Event Listeners
-
+//Gas
+const gasUrl= "https://api.eia.gov/v2/natural-gas/pri/rescom/data/?api_key=DSoIexmljF94PXO13LN5lyCmuRhsWNAI2BqGaA03&frequency=monthly&data[0]=value&sort[0][column]=period&sort[0][direction]=desc&offset=0&length=5000"
 
 submitButton.addEventListener('click', function (event) {
     event.preventDefault();
@@ -67,21 +91,44 @@ submitFetchButton.addEventListener('click', function(event){
             const tr = document.createElement('tr');
             tr.innerHTML = 
             `<td></td> 
-            <td>${item.state}</td>
-            <td>${item.stateName}</td>
             <td>${item.period}</td>
-            <td>${item.timePeriod}</td>
-            <td>${item.sector}</td>
+            <td>${item.stateid}</td>
+            <td>${item.stateDescription}</td>
+            <td>${item.period}</td>
+            <td>${item.sectorid}</td>
             <td>${item.sectorName}</td>
-            <td>${item["all-other-costs"]}</td>
-            <td>${item["all-other-costs-units"]}</td>`
+            <td>${item.price}</td>`
             return tr;
         })
         rows.forEach(row => {
             electricBody.appendChild(row)
         })
         });
+
+        const gasData = response.response.data.filter(item => item['sectorName'] == 'gas');
+        console.log(`-----------------------`);
+        console.log(`Gas Data: ${JSON.stringify(gasData)}`)
+        const gasRows = gasData.map(item => {
+            const tr = document.createElement('tr');
+            tr.innerHTML = 
+            `<td></td> 
+            <td>${item.period}</td>
+            <td>${item.stateid}</td>
+            <td>${item.stateDescription}</td>
+            <td>${item.period}</td>
+            <td>${item.sectorid}</td>
+            <td>${item.sectorName}</td>
+            <td>${item.price}</td>`;
+            return tr;
+        });
+
+gasRows.forEach(row => {
+    gasBody.appendChild(row)
+})
 });
+
+
+
 
 
 
