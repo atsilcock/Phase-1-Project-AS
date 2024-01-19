@@ -7,7 +7,7 @@ const gasInput = document.querySelector('input[name="Gas"]');
 const waterInput = document.querySelector('input[name="Water"]');
 const phoneInput = document.querySelector('input[name="Phone"]');
 const formParametersElement = document.getElementById('formParameters');
-const resultsDiv = document.getElementById('fetch-response');
+const electricBody = document.getElementById('electric-body');
 const headers = {
     "X-Params": {
         "frequency": "annual",
@@ -61,16 +61,24 @@ submitFetchButton.addEventListener('click', function(event){
         //     Object.keys(item).forEach(key=>keys.add(key))
         // })
         const residentialData = response.response.data.filter(item => item['sectorName'] == 'residential')
-        response.response.data.forEach(item => console.log(item))
         console.log(`-----------------------`)
         console.log(`Residential Data: ${JSON.stringify(residentialData)}`)
-        const paragraphs = residentialData.map(item => {
-            const p = document.createElement('p');
-            p.textContent = JSON.stringify(item)
-            return p;
+        const rows = residentialData.map(item => {
+            const tr = document.createElement('tr');
+            tr.innerHTML = 
+            `<td></td> 
+            <td>${item.state}</td>
+            <td>${item.stateName}</td>
+            <td>${item.period}</td>
+            <td>${item.timePeriod}</td>
+            <td>${item.sector}</td>
+            <td>${item.sectorName}</td>
+            <td>${item["all-other-costs"]}</td>
+            <td>${item["all-other-costs-units"]}</td>`
+            return tr;
         })
-        paragraphs.forEach(paragraph => {
-            resultsDiv.appendChild(paragraph)
+        rows.forEach(row => {
+            electricBody.appendChild(row)
         })
         });
 });
