@@ -37,3 +37,7 @@ table {
 tr:nth-child(even) {
     background-color: gray;
   }
+
+.hidden {
+    display:none;
+}

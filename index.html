@@ -7,25 +7,27 @@
 <body>
     <h1>Simple Budget</h1>
     <h3>Enter the amounts below and click submit to get a total</h3>
-    <form>
+    <form id="sum-form">
         <label for="Electricity">Electric</label><br>
-        <input type="number" placeholder="$0" name="Electric" id="electricAmount"><br>
+        <input type="number" placeholder="$0" name="Electric" id="electricAmount"/><br>
     
         <label for="Rent">Rent</label><br>
-        <input type="number" placeholder="$0" name="Rent" id="rentAmount"><br> 
+        <input type="number" placeholder="$0" name="Rent" id="rentAmount"/><br> 
 
         <label for="Gas">Gas</label><br>
-        <input type="number" placeholder="$0" name="Gas" id="gasAmount"><br> 
+        <input type="number" placeholder="$0" name="Gas" id="gasAmount"/><br> 
 
         <label for="Water">Water</label><br>
-        <input type="number" placeholder="$0" name="Water" id="waterAmount"><br> 
+        <input type="number" placeholder="$0" name="Water" id="waterAmount"/><br> 
 
         <label for="Phone">Phone</label><br>
-        <input type="number" placeholder="$0" name="Phone" id="phoneAmount"><br> 
-    
-        <input type="submit" value="Submit" >
-        <input type="button" value="fetch" id="testButton" >
-        
+        <input type="number" placeholder="$0" name="Phone" id="phoneAmount"/><br> 
+
+        <input type="button" value="CO State Info" id="testButton"/>
+
+        <input type="submit" value="Sum Total"/>
+
+        <h3> <div id="formParameters"></div> </h3>
     </form>
     
     <table>
@@ -44,7 +46,7 @@
         <tbody id="electric-body"> </tbody>
       </table>
 
-      <table>
+      <!-- <table>
         <thead> 
             <tr>
                 <th></th>
@@ -58,11 +60,11 @@
             </tr>   
         </thead>
         <tbody id="gas-body"> </tbody>
-    </table>
+    </table> -->
 
     <div id="fetch-response"></div>
 
-    <h3> <div id="formParameters"></div> </h3>
+    
     
     
     
