@@ -1,43 +1,40 @@
-# Simple Budget App
+Simple Budget App
 
-## Overview
+Overview
 
-The Simple Budget App is designed to calculate different budget items into one total.
+The Simple Budget App is a web-based application designed to help users calculate and manage their budget. Users can input amounts for various budget items, view a summary of individual and total expenses, and fetch utility cost data based on the EIA's API.
 
-## Features
+Features
 
-- **Feature 1:** Each budget item is represented as a box on the interface.
-- **Feature 2:** Users can enter the amount for each budget item within its respective box.
-- **Feature 3:** After entering all amounts, users can click the "Submit" button.
-- **Feature 4:** A list displaying the name and individual total of each budget item, along with the grand total, is generated below.
-- **Feature 5: ** User can add an expense or delete an expense 
-- **Feature 5:** The user is able to see the current rate of thier utility, based on EIA's API. Based on the number, the user then can divide their total number by the utlity cost and get a cost per dollar breakdown. 
+- Each budget item (Electricity, Rent, Gas, Water, Phone) is represented with an input box on the interface.
+- Users can enter the amount for each budget item within its respective input box.
+- After entering all amounts, users can click the "Submit" button.
+- A list below the form displays the name and individual total of each budget item, along with the grand total.
+- Users can fetch utility cost data based on the EIA's API, displaying it in a table with details such as period, state ID, state description, sector ID, sector name, and cost per kWh.
+- Users can add an expense or delete an expense.
 
-## Getting Started
+Prerequisites
 
-### Prerequisites
+There are no prerequisites for using the app.
 
-There are no prerequisites.
-
-### Installation
+Installation
 
 No installation is required as the app is web-based. Simply access it through a web browser.
 
-## Usage
+Usage
 
-The app is straightforward to use:
+- Type the amount within the provided boxes for each budget item (Electricity, Rent, Gas, Water, Phone).
+- Click the "Submit" button to calculate and display the total expenses.
+- View the list below, which shows the name and individual total of each budget item, along with the grand total.
+- Fetch utility cost data using the provided button to see additional insights.
+- Users can add or delete expenses as needed.
 
-1. Type the amount within the provided boxes for each budget item (Rent, Electricity, Water, Gas, Phone).
-2. Click the "Submit" button.
-3. View the list below, which displays the name and individual total of each budget item, along with the grand total.
-4. A PDF is generated, providing detailed information on each budget item and the overall total.
+Additional Information
 
-Note: The PDF will be available for download or viewing, but specific details on access are not provided in this README.
+- The app fetches utility cost data based on the EIA's API, providing information such as period, state ID, state description, sector ID, sector name, and cost per kWh.
+- The table displays data for the "residential" sector, specifically for electricity.
+- The app is designed to be straightforward with no known issues or limitations.
 
-## Additional Information
+Author
 
-- No known issues or limitations.
-
-## Author
-
-- Alin Silcock 
+Alin Silcock
