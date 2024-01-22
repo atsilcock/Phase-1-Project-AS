@@ -79,7 +79,7 @@ body {
     box-shadow: 3px 4px #e04b52
   }
   
-  number {
+  .toy-avatar {
     justify-self: center;
     height: 12rem;
     width: auto;
