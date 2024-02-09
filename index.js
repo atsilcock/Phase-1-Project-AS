@@ -19,34 +19,6 @@ const electricBody = document.getElementById('electric-body');
 
 let totalIsVisible = false;
 
-
-
-// API Header
-
-const headers = {
-    "X-Params": {
-        "frequency": "monthly",
-        "data": [
-            "price"
-        ],
-        "facets": {
-            "stateid": [
-                "CO"
-            ]
-        },
-        "start": null,
-        "end": null,
-        "sort": [
-            {
-                "column": "period",
-                "direction": "desc"
-            }
-        ],
-        "offset": 0,
-        "length": 5000
-    }
-}
-
 //Event Listener 
 
 document.addEventListener("DOMContentLoaded",(event)=>{
